@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>❤️</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- ✅ свет под картинкой -->
+  <div id="lightsLayer" class="lightsLayer" aria-hidden="true"></div>
+
+  <!-- ✅ конфетти/эффекты над всем -->
+  <svg id="fxLayer" class="fxLayer" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <div id="catLayer" class="catLayer" aria-hidden="true"></div>
+
+  <button id="musicBtn" class="musicBtn hidden" type="button" aria-label="Включить музыку">
+    ▶ Включить музыку
+  </button>
+
+  <main class="wrap">
+    <h1 class="title">Собери сердечко быстро!!!</h1>
+    <h1>ฅ ^>⩊<^ ฅ</h1>
+
+    <div id="stage" class="stage">
+      <svg id="heart" class="heart" viewBox="0 0 512 512" aria-label="Heart puzzle">
+        <defs>
+          <path id="heartShape"
+            d="M462.3 62.6c-54.5-46.4-136-38.3-186.4 13.7L256 96.2l-19.9-19.9
+               C185.7 24.3 104.2 16.2 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.7
+               L233.4 470c6.2 6.4 14.5 10 23.4 10s17.2-3.6 23.4-10L472.2 270.3
+               c56.2-57.9 52.9-154.1-9.9-207.7z" />
+
+          <clipPath id="clip0" clipPathUnits="userSpaceOnUse">
+            <path d="M0 0 H132
+                     C144 40 144 80 132 120
+                     C120 160 120 200 132 240
+                     C144 280 144 320 132 360
+                     C120 400 120 440 132 512
+                     H0 Z" />
+          </clipPath>
+
+          <clipPath id="clip1" clipPathUnits="userSpaceOnUse">
+            <path d="M84 0 H230
+                     C242 40 242 80 230 120
+                     C218 160 218 200 230 240
+                     C242 280 242 320 230 360
+                     C218 400 218 440 230 512
+                     H84
+                     C96 440 96 400 84 360
+                     C72 320 72 280 84 240
+                     C96 200 96 160 84 120
+                     C72 80 72 40 84 0 Z" />
+          </clipPath>
+
+          <clipPath id="clip2" clipPathUnits="userSpaceOnUse">
+            <path d="M184 0 H330
+                     C342 40 342 80 330 120
+                     C318 160 318 200 330 240
+                     C342 280 342 320 330 360
+                     C318 400 318 440 330 512
+                     H184
+                     C196 440 196 400 184 360
+                     C172 320 172 280 184 240
+                     C196 200 196 160 184 120
+                     C172 80 172 40 184 0 Z" />
+          </clipPath>
+
+          <clipPath id="clip3" clipPathUnits="userSpaceOnUse">
+            <path d="M284 0 H430
+                     C442 40 442 80 430 120
+                     C418 160 418 200 430 240
+                     C442 280 442 320 430 360
+                     C418 400 418 440 430 512
+                     H284
+                     C296 440 296 400 284 360
+                     C272 320 272 280 284 240
+                     C296 200 296 160 284 120
+                     C272 80 272 40 284 0 Z" />
+          </clipPath>
+
+          <clipPath id="clip4" clipPathUnits="userSpaceOnUse">
+            <path d="M384 0 H512 V512
+                     H384
+                     C396 440 396 400 384 360
+                     C372 320 372 280 384 240
+                     C396 200 396 160 384 120
+                     C372 80 372 40 384 0 Z" />
+          </clipPath>
+        </defs>
+
+        <use class="heartBase hiddenHeart" href="#heartShape"></use>
+
+        <use class="piece" data-id="0" href="#heartShape" clip-path="url(#clip0)"></use>
+        <use class="piece" data-id="1" href="#heartShape" clip-path="url(#clip1)"></use>
+        <use class="piece" data-id="2" href="#heartShape" clip-path="url(#clip2)"></use>
+        <use class="piece" data-id="3" href="#heartShape" clip-path="url(#clip3)"></use>
+        <use class="piece" data-id="4" href="#heartShape" clip-path="url(#clip4)"></use>
+
+        <use class="heartOutline" href="#heartShape"></use>
+      </svg>
+
+      <img id="finalImage" class="finalImage hidden" src="img/final.jpg" alt="❤️">
+    </div>
+
+    <p class="hint" id="hint">Нажми на подсвеченный кусочек ✮⋆˙</p>
+  </main>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="riddleTitle">
+      <div class="modal__title" id="riddleTitle"></div>
+      <div class="modal__text" id="riddleText"></div>
+
+      <input class="modal__input" id="answerInput" placeholder="Ответ..." autocomplete="off"/>
+
+      <div class="modal__row">
+        <button class="btn" id="checkBtn">Проверить</button>
+        <button class="btn btn--ghost" id="closeBtn">Закрыть</button>
+      </div>
+
+      <div class="modal__error" id="error"></div>
+    </div>
+  </div>
+
+  <div id="fade" class="fade hidden"></div>
+
+  <div id="cinema" class="cinema hidden" aria-hidden="true">
+    <video id="blehVideo" class="cinema__video" src="bleh.mp4" playsinline></video>
+    <div id="cinemaHint" class="cinema__hint hidden">Нажми, чтобы включить видео</div>
+  </div>
+
+  <!-- ✅ MUH prompt -->
+<div id="muhOverlay" class="muhOverlay hidden" aria-hidden="true">
+  <div class="muhCard">
+    <img class="muhImg" src="img/muh.jpg" alt="muh">
+    <button id="muhContinueBtn" class="muhBtn btn" type="button">Продолжить?</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+
+</body>
+</html>
