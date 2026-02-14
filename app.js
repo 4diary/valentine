@@ -1241,7 +1241,7 @@ function startFlappyMiniGame() {
       ctx.fillStyle = "rgba(255,255,255,0.95)";
       ctx.font = `900 ${Math.round(44 * SCALE)}px system-ui, Arial`;
       ctx.textAlign = "center";
-      ctx.fillText("Ой! 😅", W() / 2, H() * 0.48);
+      ctx.fillText("НУУУУ((", W() / 2, H() * 0.48);
 
       ctx.font = `700 ${Math.round(18 * SCALE)}px system-ui, Arial`;
       ctx.fillStyle = "rgba(255,255,255,0.85)";
@@ -1252,7 +1252,7 @@ function startFlappyMiniGame() {
       ctx.fillStyle = "rgba(255,255,255,0.95)";
       ctx.font = `900 ${Math.round(44 * SCALE)}px system-ui, Arial`;
       ctx.textAlign = "center";
-      ctx.fillText("Финиш ❤️", W() / 2, H() * 0.50);
+      ctx.fillText("УРААА❤️", W() / 2, H() * 0.50);
     }
 
     if (!stopLoop) requestAnimationFrame(loop);
